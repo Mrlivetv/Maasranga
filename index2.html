@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        let seconds = 20;
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const messageElement = document.getElementById('message');
+            const interval = setInterval(() => {
+                countdownElement.textContent = seconds;
+                seconds--;
+                if (seconds < 0) {
+                    clearInterval(interval);
+                    messageElement.textContent = "Processing complete!";
+                    window.location.href = "https://web.telegram.org/";
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="startCountdown()">
+    <div class="container">
+        <h1>Please wait...</h1>
+        <p id="message">Processing your request. Estimated time: <span id="countdown">20</span> seconds.</p>
+    </div>
+</body>
+</html>
